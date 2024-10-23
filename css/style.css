@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+:root {
+    --blue: #3498db;
+    --red: #e74c3c;
+    --orange: #f39c12;
+    --black: #333;
+    --white: #fff;
+    --light-bg: #ccc; /* Warna latar belakang yang lebih gelap */
+    --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    --border: 2px solid var(--black);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--blue);
+}
+
+body {
+    background-image: url('https://www.rentalmobilbali.net/wp-content/uploads/2016/02/Pemandangan-Kabut-Desa-Pinggan-Kintamani-Twitter.jpg');
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.btn,
+.delete-btn,
+.option-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.btn:hover,
+.delete-btn:hover,
+.option-btn:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    box-shadow: 0 0 20px var(--blue);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px var(--blue);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--blue);
+    }
+    100% {
+        box-shadow: 0 0 10px var(--blue);
+    }
+}
+
+.btn {
+    background-color: var(--blue);
+    margin-top: 8px;
+}
+
+.delete-btn {
+    background-color: var(--red);
+}
+
+.option-btn {
+    background-color: var(--orange);
+}
+
+.form-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form-container form {
+    width: 500px;
+    border-radius: 5px;
+    border: var(--border);
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0,0,0, 0.7);
+}
+
+.form-container form h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: var(--black);
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--blue);
+}
+
+.form-container form h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 4px;
+    background-color: var(--orange);
+    transition: width 0.3s ease;
+}
+
+.form-container form h3:hover::before {
+    width: 100%;
+}
+
+.form-container form h3 span {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.form-container form h3:hover {
+    color: var(--red);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+
+.form-container form .box {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--blue); 
+    padding: 12px 14px;
+    font-size: 18px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
+
+.form-container form .box:hover {
+    background-color: rgba(255, 255, 255, 1); 
+    border-color: var(--orange); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.form-container form a {
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.form-container form a:hover {
+    color: var(--red);
+}
+
+.form-container form a:active {
+    transform: scale(0.95); 
+}
+
+.message {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.message:hover {
+    background-color: #e0e0e0;
+}
+
+.message::before {
+    content: "\2715"; 
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.message:hover::before {
+    opacity: 1;
+}
+
+.message.clicked {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.container {
+    display: flex;
+    flex-wrap : wrap;
+    justify-content: space-around;
+}
+
+.container .heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeInScale 1.5s ease-in-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container .heading:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.container .heading:hover:before {
+    opacity: 1;
+    transform: rotate(45deg);
+}
+
+.container .heading span {
+    position: relative;
+    z-index: 2;
+}
+
+
+.container .user-profile {
+    padding: 20px;
+    text-align: center;
+    border: var(--border);
+    background-color: rgba(0, 0, 0, 0.7); 
+    box-shadow: var(--box-shadow);
+    color: var(--white); 
+    border-radius : 5px;
+    margin : 20px auto;
+    max-width: 500px;
+}
+
+.container .user-profile p {
+    margin-bottom : 15px;
+    font-size : 15px;
+    color : var(--black);
+}
+
+.container .user-profile p span {
+    color : var(--red);
+}
+
+.container .user-profile .flex {
+    display : flex;
+    justify-content: center;
+    flex-wrap : wrap;
+    gap : 10px;
+    align-items: flex-end;
+}
+
+.container .products {
+    background-color: rgba(0, 0, 0, 0.7); /* Latar belakang hitam transparan */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.container .products .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.container .products .box-container .box {
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .products .box-container .box img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.container .products .box-container .box .name {
+    margin: 10px 0;
+    color: #ff6347;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.container .products .box-container .box .price {
+    background-color: #ff6347;
+    color: #fff;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 16px;
+    animation: fadeInUp 0.5s ease-in-out;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.container .products .box-container .box .price:hover {
+    background-color: #f08080;
+    transform: scale(1.1);
+}
+
+.container .products .box-container .box .price:active {
+    background-color: #cd5c5c;
+    transform: scale(0.9);
+    transition-duration: 0s;
+}
+
+
+
+
+.container .products .box-container .box .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container .products .box-container .box .btn:hover {
+    background-color: #0056b3;
+}
+
+.container .products .box-container .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container .products .box-container .box input[type="number"] {
+    margin: 5px 0;
+    width: calc(100% - 28px);
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.container .products .box-container .box input[type="number"]:focus {
+    border-color: #ff6347;
+    outline: none;
+}
+.container .shopping-cart {
+    padding: 20px 0;
+}
+
+.container .shopping-cart table {
+    width: 100%;
+    text-align: center;
+    border: var(--border);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    overflow: hidden; 
+}
+
+.container .shopping-cart table thead {
+    background-color: var(--black);
+}
+
+.container .shopping-cart table thead th {
+    padding: 15px;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.container .shopping-cart table .table-bottom {
+    background-color: var(--light-bg);
+}
+
+.container .shopping-cart table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: background-color 0.3s ease; 
+}
+
+.container .shopping-cart table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.container .shopping-cart table tr td {
+    padding: 15px;
+    font-size: 18px;
+}
+
+.container .shopping-cart table tr td:first-child {
+    padding: 0;
+}
+
+.container .shopping-cart table tr td input[type="number"] {
+    width: 70px;
+    padding: 10px;
+    font-size: 16px;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid var(--white);
+    border-radius: 3px;
+    text-align: center;
+    transition: background-color 0.3s ease; 
+}
+
+.container .shopping-cart table tr td input[type="number"]:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container .shopping-cart .cart-btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container .shopping-cart .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    user-select: none;
+}
+
+@media (max-width: 1200px) {
+    .container .shopping-cart table {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+}
+
+@media (max-width: 768px) {
+    .container .shopping-cart table thead th,
+    .container .shopping-cart table tbody td {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 450px) {
+    .container .shopping-cart .cart-btn a {
+        font-size: 16px; 
+        padding: 10px 20px;
+    }
+}
