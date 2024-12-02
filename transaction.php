@@ -33,6 +33,13 @@ if (mysqli_num_rows($select_user) > 0) {
     $email = '';
 }
 
+// Hitung total harga dari cart
+$total_price = 0;
+$select_cart = mysqli_query($conn, "SELECT * FROM cart WHERE user_id = '$user_id'");
+while ($cart_item = mysqli_fetch_assoc($select_cart)) {
+    $total_price += $cart_item['price'] * $cart_item['quantity']; // Asumsi ada kolom price dan quantity
+}
+
 // Proses ketika form disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
@@ -41,7 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cvv = $_POST['cvv'];
 
     // Masukkan data transaksi ke tabel transactions
-    $sql = "INSERT INTO transactions (user_id, name, email, address, card_number, expiry_date, cvv) VALUES ('$user_id', '$name', '$email', '$address', '$card_number', '$expiry_date', '$cvv')";
+    $sql = "INSERT INTO transactions (user_id, name, email, address, card_number, expiry_date, cvv, total_price) 
+            VALUES ('$user_id', '$name', '$email', '$address', '$card_number', '$expiry_date', '$cvv', '$total_price')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Transaksi berhasil!');</script>";
@@ -84,6 +92,10 @@ $conn->close();
             <div class="form-group">
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <div class="form-group">
+                <label for="total_price">Total Harga</label>
+                <input type="text" id="total_price" name="total_price" value="<?= number_format($total_price, 2) ?>" readonly>
             </div>
             <button type="submit">Submit</button>
         </form>
